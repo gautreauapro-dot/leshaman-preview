@@ -303,17 +303,9 @@
   if (!hasGsap || reduceMotion) return;
 
   // Ouverture
-  const letters = (() => {
-    const wm = $('.hero__watermark[data-split]');
-    if (!wm) return [];
-    const txt = wm.textContent.trim();
-    wm.textContent = '';
-    return Array.from(txt).map((ch) => { const s = document.createElement('span'); s.textContent = ch; wm.appendChild(s); return s; });
-  })();
   const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
   intro
-    .to(letters, { opacity: 1, y: 0, duration: 1.6, stagger: { each: .07, from: 'center' } }, .3)
-    .fromTo('.hero__name', { opacity: 0, letterSpacing: '1.3em' }, { opacity: 1, letterSpacing: window.innerWidth > 960 ? '.82em' : '.5em', duration: 2, ease: 'power2.out' }, .7)
+    .fromTo('.hero__logo', { opacity: 0, y: 24, scale: .96 }, { opacity: 1, y: 0, scale: 1, duration: 2.2, ease: 'power2.out' }, .3)
     .fromTo('.hero__tag', { opacity: 0, y: 14 }, { opacity: .92, y: 0, duration: 1.2 }, 1.3)
     .fromTo('.site-header', { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 1.2 }, 1.1)
     .fromTo('.hero__foot', { opacity: 0 }, { opacity: 1, duration: 1.2 }, 1.5);
@@ -356,6 +348,16 @@
     const amt = parseFloat(img.dataset.parallaxAmount || 6);
     const trigger = img.closest('.reveal-img, .spa__band, .events, .feature') || img;
     gsap.fromTo(img, { yPercent: -amt }, { yPercent: amt, ease: 'none', scrollTrigger: { trigger, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+
+  // Domaine : colonnes à vitesses différentes (desktop)
+  ScrollTrigger.matchMedia({
+    '(min-width: 961px)': () => {
+      $$('.domaine__col[data-speed]').forEach((col) => {
+        const v = parseFloat(col.dataset.speed);
+        gsap.fromTo(col, { yPercent: -v }, { yPercent: v, ease: 'none', scrollTrigger: { trigger: '.domaine__grid', start: 'top bottom', end: 'bottom top', scrub: true } });
+      });
+    },
   });
 
   // Blocs décalés : légère profondeur sur les vignettes superposées
