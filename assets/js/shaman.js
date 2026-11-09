@@ -153,7 +153,7 @@
   const progress = $('.hero__progress');
   let heroIndex = 0;
   let heroTimer = null;
-  const HERO_DELAY = 7000;
+  const HERO_DELAY = 6000;
 
   const loadSlide = (s) => {
     const img = $('img', s);
