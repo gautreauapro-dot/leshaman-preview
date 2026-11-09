@@ -638,6 +638,11 @@ figure { margin: 0; }
 .footer-contact .todo { color: rgba(246,238,225,.45); font-style: italic; }
 .footer-houses { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px clamp(20px, 3vw, 44px); }
 .footer-houses a { display: block; }
+.footer-houses li > span { display: block; margin-top: 6px; font-size: 14px; font-style: italic; color: rgba(246,238,225,.62); }
+.footer-houses address { margin-top: 10px; font-style: normal; font-size: 13.5px; line-height: 1.6; color: rgba(246,238,225,.78); }
+.footer-houses address a { display: inline; border-bottom: 1px solid rgba(246,238,225,.25); transition: border-color .3s var(--ease); }
+.footer-houses address a:hover { border-color: currentColor; }
+.footer-house__name:hover strong { color: var(--wood); }
 .footer-houses strong { display: block; font-family: var(--sans); font-weight: 500; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; line-height: 1.5; transition: color .3s var(--ease); }
 .footer-houses span { display: block; margin-top: 6px; font-size: 14px; font-style: italic; color: rgba(246,238,225,.62); }
 .footer-houses a:hover strong { color: var(--wood); }
